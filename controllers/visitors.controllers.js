@@ -3,12 +3,10 @@ const autoResponseEmailTemplate = require('../public/templates/autoResponseEmail
 
 var nodemailer = require('nodemailer');
 var smtpConfig = {
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // use SSL
+    service: 'gmail',
     auth: {
-        user: process.env.user,
-        pass: process.env.pass
+        user: "saipavan.anand08@gmail.com",
+        pass: "susanth123"
     }
 };
 var transporter = nodemailer.createTransport(smtpConfig);
