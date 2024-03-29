@@ -3,10 +3,12 @@ const autoResponseEmailTemplate = require('../public/templates/autoResponseEmail
 
 var nodemailer = require('nodemailer');
 var smtpConfig = {
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
-        user: "saipavan.anand08@gmail.com",
-        pass: "susanth123"
+        user: process.env.user,
+        pass: process.env.pass
     }
 };
 var transporter = nodemailer.createTransport(smtpConfig);
@@ -20,7 +22,7 @@ insertData = (req, res) => {
             res.send(err);
         } else {
             var mailOptions = {
-                from: '"Pavan Anand" <saipavan.anand@gmail.com>',
+                from: '"Pavan Anand Chinthalapudi" <saipavan.anand@gmail.com>',
                 to: req.body.email,
                 bcc: 'saipavan.anand@gmail.com',
                 subject: 'Thank you for your response.',
