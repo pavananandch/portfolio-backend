@@ -3,13 +3,13 @@ const autoResponseEmailTemplate = require('../public/templates/autoResponseEmail
 
 var nodemailer = require('nodemailer');
 var smtpConfig = {
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.user,
-        pass: process.env.pass
-    }
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "saipavan.anand08@gmail.com",
+    pass: "kpov klsh tfdr nmgr",
+  },
 };
 var transporter = nodemailer.createTransport(smtpConfig);
 
@@ -43,6 +43,7 @@ insertData = (req, res) => {
 
 getData = (req, res) => {
     visitorsModel.find({}, (err, docs) => {
+        console.log(docs.length);
         res.send({
             status: true,
             data: docs

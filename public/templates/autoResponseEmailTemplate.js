@@ -15,7 +15,7 @@ emailTemplate = (details)=>{
     <p>Hello <b>${details.name},</b></p>
     <p>Thanks a bunch for your valuable feekback. It means a lot, just like you do! I really appreciate you giving me a moment of your time today. Thanks for being you.</p>
     <footer>
-		<p>Copyright ©2021 | All Rights Reserved</p>
+		<p>Copyright ©2025 | All Rights Reserved</p>
 	</footer>
 </div>`
 }
