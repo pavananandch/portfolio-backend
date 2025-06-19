@@ -22,6 +22,7 @@
 const dotenv = require("dotenv").config();
 const dialogflow = require("dialogflow");
 const uuid = require("uuid");
+const ChatHistory = require("../models/chats.model.js");
 const projectId = process.env.PROJECT_ID || "pavan-anand-portfolio";
 const credentialsPath = process.env.CREDENTIALS_PATH || "../secrets.json";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = credentialsPath;
@@ -51,6 +52,13 @@ getBotResponse = async (req, res) => {
       const responses = await sessionClient.detectIntent(request);
       const result = responses[0].queryResult.fulfillmentText;
       const queryText = responses[0].queryResult.queryText;
+
+      // Store chat history in MongoDB
+      await ChatHistory.create({
+        sessionId: sessionId,
+        userInput: queryText,
+        botResponse: result,
+      });
 
       if (result) {
         res.json({
